@@ -56,18 +56,11 @@ public class TableVisualizer implements Visualizer{
 		
 		int i = 0;
 		for (Movie m : movieList) {
-			String genre = "";
-			ArrayList<String> tmpList = m.getGenre();
-	    	if (tmpList.size() > 0) {
-	            genre = tmpList.get(0);
-	    	} else {
-	    		genre = "No Genre";
-	    	}
 			dataTable.setValue(i, 0, m.getTitle());
 			dataTable.setValue(i, 1, m.getYear());
 			dataTable.setValue(i, 2, m.getLength());
 			dataTable.setValue(i, 3, m.getCountry());
-			dataTable.setValue(i, 4, genre);
+			dataTable.setValue(i, 4, m.getGenre().toString());
 			dataTable.setValue(i, 5, m.getLanguage());
 			i++;
 		}
