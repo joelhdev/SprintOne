@@ -1,4 +1,4 @@
-package com.google.gwt.sample.stockwatcher;
+package ch.uzh.se15.visualizer;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
