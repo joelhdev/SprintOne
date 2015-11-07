@@ -69,8 +69,8 @@ public class TableVisualizer implements Visualizer{
 		TableOptions options = TableOptions.create();
 		options.setAlternatingRowStyle(true);
 		options.setPage(TablePage.ENABLE);
+		// Limit the number of displayed movies to 100.
 		options.setPageSize(100);
-		//options.setShowRowNumber(true);
 
 		// Draw visualization
 		table.draw(dataTable, options);

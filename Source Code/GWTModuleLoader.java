@@ -163,7 +163,7 @@ public class GWTModuleLoader implements EntryPoint {
 			}
 		};
 
-		// Populate the menu with all country options
+		// Populate genre ListBox using the country set
 		countryBox.addItem("Country");
 		Iterator<String> countryIterator = countrySet.iterator();
 		while(countryIterator.hasNext()) {
@@ -187,6 +187,7 @@ public class GWTModuleLoader implements EntryPoint {
 			}
 		};
 
+		// Populate genre ListBox using the genre set
 		genreBox.addItem("Genre");
 		Iterator<String> genreIterator = genreSet.iterator();
 		while(genreIterator.hasNext()) {
@@ -210,6 +211,7 @@ public class GWTModuleLoader implements EntryPoint {
 			}
 		};
 
+		// Populate genre ListBox using the language set
 		languageBox.addItem("Language");
 		Iterator<String> languageIterator = languageSet.iterator();
 		while(languageIterator.hasNext()) {
@@ -282,7 +284,7 @@ public class GWTModuleLoader implements EntryPoint {
 		horLengthRangePanel.add(verLengthListBoxes);
 
 
-		// Year range boxes; These will eventually be replaced with an interactive slider
+		// Year range boxes; these will eventually be replaced with an interactive slider
 		HorizontalPanel horYearRangePanel = new HorizontalPanel();
 
 		Label yearLabel = new Label("Year:");
