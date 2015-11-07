@@ -21,6 +21,8 @@ public class GWTModuleLoader implements EntryPoint {
 
 	private MovieCollection mc;
 	private TreeSet<String> countrySet;
+	private TreeSet<String> genreSet;
+	private TreeSet<String> languageSet;
 	private VerticalPanel mainVerPanel;
 	private boolean isVisualized = false;
 	final int bottomWidgetIndex = 3;
@@ -46,6 +48,20 @@ public class GWTModuleLoader implements EntryPoint {
 		countrySet = new TreeSet<String>();
 		for (Movie m : mc.getMovieArrayList()) {
 			countrySet.add(m.getCountry());
+		}
+		
+		// Add genres to set (no duplicates allowed)
+		genreSet = new TreeSet<String>();
+		for (Movie m : mc.getMovieArrayList()) {
+			for (String s : m.getGenre()) {
+				genreSet.add(s);
+			}
+		}
+		
+		// Add languages to set (no duplicates allowed)
+		languageSet = new TreeSet<String>();
+		for (Movie m : mc.getMovieArrayList()) {
+			languageSet.add(m.getLanguage());
 		}
 	}
 
@@ -172,6 +188,10 @@ public class GWTModuleLoader implements EntryPoint {
 		};
 
 		genreBox.addItem("Genre");
+		Iterator<String> genreIterator = genreSet.iterator();
+		while(genreIterator.hasNext()) {
+			genreBox.addItem(genreIterator.next());
+		}
 
 		genreBox.addChangeHandler(new ChangeHandler() {
 			@Override
@@ -191,6 +211,10 @@ public class GWTModuleLoader implements EntryPoint {
 		};
 
 		languageBox.addItem("Language");
+		Iterator<String> languageIterator = languageSet.iterator();
+		while(languageIterator.hasNext()) {
+			languageBox.addItem(languageIterator.next());
+		}
 
 		languageBox.addChangeHandler(new ChangeHandler() {
 			@Override
