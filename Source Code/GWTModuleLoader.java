@@ -18,8 +18,9 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * 
- * @author joel hillard
+ * The class GWTModuleLoader builds all the filters and buttons for the GUI.
+ * It adds all the created widgets to the rootPanel.
+ * @author
  * @history
  * @version
  * @responsibilities
@@ -37,11 +38,9 @@ public class GWTModuleLoader implements EntryPoint {
 
 	
 	/**
-	 * Entry point method.
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
+	 *Entry point method. Calls the methodes that build the GUI.
+	 *@pre-
+	 *@post-
 	 */
 	public void onModuleLoad() {
 		buildCollection();
@@ -51,12 +50,11 @@ public class GWTModuleLoader implements EntryPoint {
 
 	
 	/**
-	 * Create a new movie collection and populate related data structures
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
-	 */
+	*Creates a new movie collection and the TreeSets countrySet, genreSet and languageSet.
+	*Populates the TreeSets.
+	*@pre-
+	*@post-
+	*/
 	private void buildCollection() {
 		
 		mc = new MovieCollection(); // Create a new movie collection, which will populate it with locally created Movies
@@ -85,11 +83,10 @@ public class GWTModuleLoader implements EntryPoint {
 
 	
 	/**
-	 * Create graphical user interface (GUI)
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
+	 * Creates the main vertical panel for de GUI. 
+	 * Adds the headerimage and all other panels to the main panel.
+	 * @pre-
+	 * @post-
 	 */
 	private void buildGUI() {
 		
@@ -117,12 +114,12 @@ public class GWTModuleLoader implements EntryPoint {
 
 
 	
-	/**
-	 * Create button panel
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
+/**
+	 * Create the button panel and the buttons Visualize in Table, World Map, Length Histogram, Country Bar Graph.
+	 * Sets all buttons except the Visualize inTable button as disabled.
+	 * Adds all buttons to the button panel.
+	 * @pre-
+	 * @post-
 	 */
 	private void constructButtonPanel() {	    
 		// Table visualization button
@@ -176,15 +173,15 @@ public class GWTModuleLoader implements EntryPoint {
 	
 	
 	/**
-	 * Create filter panel
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
+	 * Creates a filter panel and the filters for country, genre, language, movielenght and year of the movie publication.
+	 * Creates also a reset button.
+	 * Adds all the filters and the reset button to the panel.
+	 * @pre-
+	 * @post-
 	 */
 	private void constructFilterPanel() {
 
-		// Country box
+		// Creates the country box
 		final ListBox countryBox = new ListBox() {
 			// Override is necessary for proper later retrieval of the ListBox's selected index
 			@Override
@@ -193,7 +190,7 @@ public class GWTModuleLoader implements EntryPoint {
 			}
 		};
 
-		// Populate genre ListBox using the country set
+		// Populate country ListBox using the country set
 		countryBox.addItem("Country");
 		Iterator<String> countryIterator = countrySet.iterator();
 		while(countryIterator.hasNext()) {
@@ -209,7 +206,7 @@ public class GWTModuleLoader implements EntryPoint {
 		countryBox.setVisibleItemCount(1);
 
 
-		// Genre box
+		// Creates the genre box
 		final ListBox genreBox = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -233,7 +230,7 @@ public class GWTModuleLoader implements EntryPoint {
 		genreBox.setVisibleItemCount(1);
 
 
-		// Language box
+		// Creates the language box
 		final ListBox languageBox = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -241,7 +238,7 @@ public class GWTModuleLoader implements EntryPoint {
 			}
 		};
 
-		// Populate genre ListBox using the language set
+		// Populate language ListBox using the language set
 		languageBox.addItem("Language");
 		Iterator<String> languageIterator = languageSet.iterator();
 		while(languageIterator.hasNext()) {
@@ -257,12 +254,12 @@ public class GWTModuleLoader implements EntryPoint {
 		languageBox.setVisibleItemCount(1);
 
 
-		// Length range boxes
+		// Creates the length range boxes
 		HorizontalPanel horLengthRangePanel = new HorizontalPanel();
 
 		Label lengthLabel = new Label("Length:");
 
-		// From length box
+		// Creates the from length box
 		final ListBox fromLength = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -285,7 +282,7 @@ public class GWTModuleLoader implements EntryPoint {
 		});
 		fromLength.setVisibleItemCount(1);
 
-		// To length box
+		// Creates the to length box
 		final ListBox toLength = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -306,7 +303,7 @@ public class GWTModuleLoader implements EntryPoint {
 		});
 		toLength.setVisibleItemCount(1);
 
-		// Construct length panel out of label and ListBoxes
+		// Adds all the boxes to the panel
 		VerticalPanel verLengthListBoxes = new VerticalPanel();	    
 		horLengthRangePanel.add(lengthLabel);
 		verLengthListBoxes.add(fromLength);
@@ -314,12 +311,12 @@ public class GWTModuleLoader implements EntryPoint {
 		horLengthRangePanel.add(verLengthListBoxes);
 
 
-		// Year range boxes; these will eventually be replaced with an interactive slider
+		// Creates the year range boxes; these will eventually be replaced with an interactive slider
 		HorizontalPanel horYearRangePanel = new HorizontalPanel();
 
 		Label yearLabel = new Label("Year:");
 
-		// From year box
+		// Creates the from year box
 		final ListBox fromYear = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -341,7 +338,7 @@ public class GWTModuleLoader implements EntryPoint {
 		});
 		fromYear.setVisibleItemCount(1);
 
-		// To year box
+		// Creates the to year box
 		final ListBox toYear = new ListBox() {
 			@Override
 			public void setSelectedIndex(int index) {
@@ -361,7 +358,7 @@ public class GWTModuleLoader implements EntryPoint {
 		});
 		toYear.setVisibleItemCount(1);
 
-		// Construct year panel out of label and ListBoxes
+		// Constructs the year panel out of label and ListBoxes
 		VerticalPanel verYearListBoxes = new VerticalPanel();
 		horYearRangePanel.add(yearLabel);
 		horYearRangePanel.add(verYearListBoxes);
@@ -403,11 +400,9 @@ public class GWTModuleLoader implements EntryPoint {
 
 	
 	/**
-	 * Remove current visualization
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
+	 * Remove current visualization from the vertical Panel
+	 * @pre-
+	 * @post-
 	 */
 	private void removeOldPanels() {
 		if (isVisualized) {
@@ -420,12 +415,10 @@ public class GWTModuleLoader implements EntryPoint {
 	
 	
 	/**
-	 * Visualize in table method. Called by corresponding button
-	 * @pre
-	 * @post
-	 * @param
-	 * @return
-	 */
+	 * Removes the old Panel and creates a new Tablevisualization.
+	 * @pre-
+	 * @post-
+	 */  
 	private void visualizeInTable() {
 		removeOldPanels();
 		TableVisualizer table = new TableVisualizer(mc);
