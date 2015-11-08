@@ -2,30 +2,88 @@ package ch.uzh.se15.filmvisualizer.client;
 
 import java.util.ArrayList;
 
+
+/**The Class MovieCollection  saves the whole collection of Movie-Objects, or the results of filtering.
+ * @author 	Joel Hillard
+ * @history 2015-11-03 JH First version
+ * 			2015-11-05 DK Review results corrected
+ * 			2015-11-08 JH Further improvements
+ * @version 2015-11-08 JH 1.1
+ * @responsibilities-
+ */
 public class MovieCollection {
-	private ArrayList<Movie> movies;
 	
+	private ArrayList<Movie> movies;
+
+	
+	
+	/**Constructs a new MovieCollection and fills it with new movies through the method papulate().
+	 * @pre-
+	 * @post MovieCollection.getMovieCollectionSize() = MovieCollection.getMovieCollectionSize() + 25
+	 * @param-
+	 * @return MovieCollection 
+	 */
 	public MovieCollection() {
 		movies = new ArrayList<Movie>();
 		populate();
 	}
+
 	
+	
+	/**Adds a new Movie-Object to the Movie collection .
+	 * @pre-
+	 * @post (MovieCollection.getMovieCollectionSize() = MovieCollection.getMovieCollectionSize() +1) && (passedMovie is in the MovieCollection)
+	 * @param passedMovie Movie to be added to the Movie collection
+	 * @return-
+	 */
 	public void addMovie(Movie passedMovie) {
 		movies.add(passedMovie);
 	}
+
 	
+	
+	/**Removes the Movie-Object from the Movie collection 
+	 * @pre (MovieCollection.getMovieCollectionSize() > 0) && (passedMovie is in the MovieCollection)
+	 * @post (MovieCollection.getMovieCollectionSize() = MovieCollection.getMovieCollectionSize() -1) && (passedMovie is not more in the MovieCollection)
+	 * @param passedMovie - The movie to be removed
+	 * @return-
+	 */
 	public void removeMovie(Movie passedMovie) {
 		movies.remove(passedMovie);
 	}
+
 	
+	
+	/**Returns the whole collection of Movie-Objects from the Movie collection.
+	 * @pre-
+	 * @post-
+	 * @param-
+	 * @return ArrayList<Movie> movies- The whole movies , which are in the MovieCollection.
+	 */
 	public ArrayList<Movie> getMovieArrayList() {
 		return movies;
 	}
+
 	
+	
+	/**Returns the size (as integer) of the Movie Collection (how many Movies are in the collection)
+	 * @pre-
+	 * @post-
+	 * @param-
+	 * @return int size The size of the MovieCollection
+	 */
 	public int getMovieCollectionSize() {
 		return movies.size();
 	}
+
 	
+	
+	/**Adds several Films to the Movie collection. Is used at the beginning of the Project to show the functionality to the stakeholders
+	 * @pre-
+	 * @post MovieCollection.getMovieCollectionSize() =  MovieCollection.getMovieCollectionSize() + 25
+	 * @param-
+	 * @return-
+	 */
 	private void populate() {
 		ArrayList<String> m1List = new ArrayList<String>();
 		m1List.add("Drama");

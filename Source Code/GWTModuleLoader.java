@@ -17,6 +17,13 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Label;
 
+/**
+ * 
+ * @author joel hillard
+ * @history
+ * @version
+ * @responsibilities
+ */
 public class GWTModuleLoader implements EntryPoint {
 
 	private MovieCollection mc;
@@ -28,8 +35,13 @@ public class GWTModuleLoader implements EntryPoint {
 	final int bottomWidgetIndex = 3;
 
 
+	
 	/**
 	 * Entry point method.
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	public void onModuleLoad() {
 		buildCollection();
@@ -37,12 +49,17 @@ public class GWTModuleLoader implements EntryPoint {
 	}
 
 
+	
 	/**
 	 * Create a new movie collection and populate related data structures
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	private void buildCollection() {
-		// Create a new movie collection, which will populate it with locally created Movies
-		mc = new MovieCollection();
+		
+		mc = new MovieCollection(); // Create a new movie collection, which will populate it with locally created Movies
 
 		// Add countries to set (no duplicates allowed)
 		countrySet = new TreeSet<String>();
@@ -66,12 +83,17 @@ public class GWTModuleLoader implements EntryPoint {
 	}
 
 
+	
 	/**
 	 * Create graphical user interface (GUI)
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	private void buildGUI() {
-		// Create new main vertical panel to which all other panels shall be added
-		mainVerPanel = new VerticalPanel();
+		
+		mainVerPanel = new VerticalPanel();	// Create new main vertical panel to which all other panels shall be added
 
 		// Add header image
 		Image image = new Image();
@@ -94,8 +116,13 @@ public class GWTModuleLoader implements EntryPoint {
 	}
 
 
+	
 	/**
-	 * Create button panel.
+	 * Create button panel
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	private void constructButtonPanel() {	    
 		// Table visualization button
@@ -106,34 +133,32 @@ public class GWTModuleLoader implements EntryPoint {
 		});
 		tableButton.setStyleName("blueButton");
 
-
+		
 		// World map visualization button
 		Button worldMapButton = new Button("World Map", new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// Call method to visualize world map
 			}
 		});
-		worldMapButton.setStyleName("disabledButton");
-		worldMapButton.setEnabled(false);
+		worldMapButton.setStyleName("greenButton");
 
-
+		
 		// Length histogram visualization button
 		Button histogramButton = new Button("Length Histogram", new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// Call method to visualize histogram
 			}
 		});
-		histogramButton.setStyleName("disabledButton");
-		histogramButton.setEnabled(false);
+		histogramButton.setStyleName("purpleButton");
 
+		
 		// Bar graph visualization button
 		Button barGraphButton = new Button("Country Bar Graph", new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// Call function to visualize bar graph
 			}
 		});
-		barGraphButton.setStyleName("disabledButton");
-		barGraphButton.setEnabled(false);
+		barGraphButton.setStyleName("purpleButton");
 
 
 		// Add all buttons to a horizontal panel
@@ -148,9 +173,14 @@ public class GWTModuleLoader implements EntryPoint {
 		mainVerPanel.add(horButtonPanel);  
 	}
 
-
+	
+	
 	/**
 	 * Create filter panel
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	private void constructFilterPanel() {
 
@@ -371,8 +401,13 @@ public class GWTModuleLoader implements EntryPoint {
 	}
 
 
+	
 	/**
 	 * Remove current visualization
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
 	 */
 	private void removeOldPanels() {
 		if (isVisualized) {
@@ -382,10 +417,15 @@ public class GWTModuleLoader implements EntryPoint {
 		isVisualized = false;
 	}
 
-
+	
+	
 	/**
-	 * Visualize in table method. Called by corresponding button.
-	 */  
+	 * Visualize in table method. Called by corresponding button
+	 * @pre
+	 * @post
+	 * @param
+	 * @return
+	 */
 	private void visualizeInTable() {
 		removeOldPanels();
 		TableVisualizer table = new TableVisualizer(mc);

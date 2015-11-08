@@ -12,15 +12,41 @@ import com.googlecode.gwt.charts.client.table.Table;
 import com.googlecode.gwt.charts.client.table.TableOptions;
 import com.googlecode.gwt.charts.client.table.TablePage;
 
+
+/** The Class TableVisualizer represents the content of the movie Collection in form of a table.
+ * @author 	Joel Hillard
+ * @history 2015-11-03 JH First version
+ * 			2015-11-05 DK Review results corrected
+ * 			2015-11-08 JH Further improvements
+ * @version 2015-11-08 JH 1.1
+ * @responsibilities-
+ */
 public class TableVisualizer implements Visualizer{
+	
 	private Table table;
 	private FocusPanel focusPanel;
 	private MovieCollection mc;
 
+	
+	
+	/**Changes the MovieCollection to be visualized
+	 * @pre-
+	 * @post-
+	 * @param mc New Collection of movies that should be visualized
+	 * @return-
+	 */
 	public TableVisualizer(MovieCollection mc) {
 		this.mc = mc;
 	}
 
+	
+	
+	/** Creates a Widget, where the Table will be drawn, and calls the draw() method to visualize the table.
+	 * @pre-
+	 * @post-
+	 * @param-
+	 * @return Widget The visualized MovieCollection (table)
+	 */
 	public Widget createVisualization() {
 		focusPanel = new FocusPanel();
 		
@@ -29,6 +55,7 @@ public class TableVisualizer implements Visualizer{
 
 			@Override
 			public void run() {
+				
 				// Create visualization and add to return Panel
 				table = new Table();
 				focusPanel.setWidget(table);
@@ -39,7 +66,16 @@ public class TableVisualizer implements Visualizer{
 		return focusPanel;
 	}
 
+	
+	
+	/** Using the GWT-functionality, first a DataTable will be created, which then will be drawn.  
+	 * @pre-
+	 * @post-
+	 * @param-
+	 * @return-
+	 */
 	private void draw() {
+		
 		// Create DataTable
 		DataTable dataTable = DataTable.create();
 		dataTable.addColumn(ColumnType.STRING, "Title");
@@ -69,8 +105,7 @@ public class TableVisualizer implements Visualizer{
 		TableOptions options = TableOptions.create();
 		options.setAlternatingRowStyle(true);
 		options.setPage(TablePage.ENABLE);
-		// Limit the number of displayed movies to 100.
-		options.setPageSize(100);
+		options.setPageSize(100);	// Limit the number of displayed movies to 100.
 
 		// Draw visualization
 		table.draw(dataTable, options);
